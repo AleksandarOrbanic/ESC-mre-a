@@ -45,11 +45,14 @@ Kako biste pokrenuli aplikaciju lokalno, slijedite ove korake:
    ```
 4. Otvorite vaš preglednik na adresi `http://localhost:3000`.
 
-## Struktura projekta
+## Kako koristiti aplikaciju
 
-- `/src/components`: UI komponente (Graf, Detalji pjesme, Detalji faktora).
-- `/src/data.ts`: Centralni repozitorij podataka o ESC pjesmama i prijevodi.
-- `/src/App.tsx`: Glavna logika aplikacije i upravljanje stanjem.
+1.  **Istraživanje mreže:** Koristite kotačić miša ili "pinch" gestu za zumiranje grafa. Povucite čvorove kako biste istražili njihove međusobne veze.
+2.  **Filtriranje podataka:** Kliknite na bilo koji čvor faktora (npr. žanr, jezik, tip izvođača ili regija). Graf će se automatski filtrirati i prikazati samo povezane pjesme i države.
+3.  **Pregled detalja faktora:** Prilikom filtriranja, na desnoj strani otvorit će se panel s detaljnim popisom svih pjesama koje dijele taj faktor.
+4.  **Pregled detalja pjesme:** Kliknite na bilo koji čvor pjesme za prikaz detaljnih informacija o izvedbi, uključujući bodove, plasman i zanimljive opise.
+5.  **Resetiranje prikaza:** U bilo kojem trenutku kliknite na gumb "Resetiraj prikaz" u zaglavlju ili info panelu kako biste se vratili na puni prikaz cijele mreže.
+6.  **Metodologija:** Kliknite na gumb "Metodologija" u zaglavlju za važne napomene o načinu interpretacije podataka i mrežne centralnosti.
 
 ---
 *Izrađeno s ljubavlju prema glazbi i analitici podataka.* 🇪🇺🎶
