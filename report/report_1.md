@@ -46,6 +46,8 @@ graph TD
     I --> F
 ```
 
+*Slika 1. Dijagram toka podataka i korisničke interakcije unutar ESC Mreža aplikacije. Proces započinje ekstrakcijom strukturiranih podataka o pjesmama (A) koji se transformiraju u format čvorova i veza (B). Sustav dinamički izračunava stupanj centralnosti (C) kako bi odredio vizualnu težinu svakog atributa prije nego što D3.js pokrene simulaciju fizike (D). Konačni prikaz (E) služi kao sučelje za korisničku eksploraciju (F) koja putem povratne sprege omogućuje izolaciju specifičnih segmenata mreže (G, H) i trenutno ažuriranje vizualnog stanja (I).*
+
 Interakcija je dizajnirana da omogući "topological zooming" — klikom na čvor faktora, sustav primjenjuje filter koji izolira specifični podgraf, čime se eliminira "vizualna buka" i omogućuje fokusirana analiza korelacija.
 
 ---
