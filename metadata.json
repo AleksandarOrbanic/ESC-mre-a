@@ -1,0 +1,8 @@
+{
+  "name": "Eurovision Network Explorer",
+  "description": "Interactive network analysis of Top 3 Eurovision songs (2010-2025), visualizing connections between results, genres, and regions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
