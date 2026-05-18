@@ -30,6 +30,22 @@ Aplikacija je strukturirana kao usmjereni graf primijenjen unutar React framewor
 3.  **Analiza centralnosti:** Veličina čvorova faktora određena je njihovim *stupnjem centralnosti* (brojem direktnih veza s pjesmama).
 
 #### Procedura
+Vizualizacija toka podataka (Data Flow Diagram):
+
+```mermaid
+graph TD
+    A[Sirovi podaci: songsData] --> B[Procesiranje: Mapiranje čvorova i veza]
+    B --> C[Izračun centralnosti: Veličina čvora]
+    C --> D[D3.js Force Simulation]
+    D --> E[Renderiranje: SVG Graf]
+    E --> F{Korisnička interakcija}
+    F -->|Klik na faktor| G[Filtriranje podgrafa]
+    F -->|Klik na pjesmu| H[Prikaz detalja pjesme]
+    G --> I[Ažuriranje vizualizacije]
+    H --> I
+    I --> F
+```
+
 Interakcija je dizajnirana da omogući "topological zooming" — klikom na čvor faktora, sustav primjenjuje filter koji izolira specifični podgraf, čime se eliminira "vizualna buka" i omogućuje fokusirana analiza korelacija.
 
 ---
