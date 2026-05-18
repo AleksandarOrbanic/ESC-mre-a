@@ -1,6 +1,6 @@
 # ESC Mreža 🎤✨
 
-![Eurovision Banner](./src/assets/images/eurovision_banner_1779108339878.png)
+![Eurovision Banner](./src/assets/images/eurovision_stage_vibe_1779108990832.png)
 
 ## Opis aplikacije
 
