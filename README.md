@@ -54,5 +54,14 @@ Kako biste pokrenuli aplikaciju lokalno, slijedite ove korake:
 5.  **Resetiranje prikaza:** U bilo kojem trenutku kliknite na gumb "Resetiraj prikaz" u zaglavlju ili info panelu kako biste se vratili na puni prikaz cijele mreže.
 6.  **Metodologija:** Kliknite na gumb "Metodologija" u zaglavlju za važne napomene o načinu interpretacije podataka i mrežne centralnosti.
 
+## Napredni vodič za analizu (Use Cases)
+
+Aplikacija omogućuje dubinsko istraživanje kroz nekoliko analitičkih faza:
+
+*   **Identifikacija "Meta-trenda":** Najveći čvorovi u mreži (poput *Pop*, *English* ili *Scandinavia*) vizualno predstavljaju dominantne arhetipove uspjeha. Što je čvor veći, to je statistička vjerojatnost da će pjesma s tim atributom završiti u Top 3 veća.
+*   **Otkrivanje korelacija:** Kliknite na manji, specifičniji čvor (npr. *Rock*). Promatrajte koje su se države "usudile" ući u Top 3 s tim žanrom. Često ćete vidjeti da se određene države (klasteri) stalno vraćaju istim uspješnim receptima.
+*   **Analiza anomalija:** Pronađite pobjedničke pjesme (zlatni rub) koje su povezane s vrlo malim čvorovima. To su pjesme koje su pobijedile "protiv struje" (npr. bez engleskog jezika ili u netipičnom žanru).
+*   **Geopolitički oblaci:** Promatrajte kako se čvorovi država grupiraju oko regija. Možete uočiti je li uspjeh određene regije vezan uz zajednički glazbeni stil ili pak raznoliku strategiju.
+
 ---
 *Izrađeno s ljubavlju prema glazbi i analitici podataka.* 🇪🇺🎶
