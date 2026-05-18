@@ -1,7 +1,7 @@
 # Mrežna analiza čimbenika uspjeha na natjecanju za pjesmu Eurovizije (2010. – 2025.): Primjena teorije grafova u vizualizaciji podataka
 
-**Autor:** Sustav za analizu ESC podataka  
-**Institucija:** Laboratorij za digitalnu analitičku muzikologiju  
+**Autor:** Aleksandar Orbanić  
+**Kolegij:** Istraživanje društvenih mreža  
 **Datum:** 18. svibnja 2026.
 
 ---
