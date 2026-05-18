@@ -29,6 +29,31 @@ Aplikacija je strukturirana kao usmjereni graf primijenjen unutar React framewor
 2.  **Algoritam simulacije sile (Force-Directed Layout):** Korišten je D3.js d3-force modul za prostornu organizaciju čvorova, gdje su vizualni razmaci rezultat ravnoteže između privlačnih sila (povezanost) i odbojnih sila (kolizija).
 3.  **Analiza centralnosti:** Veličina čvorova faktora određena je njihovim *stupnjem centralnosti* (brojem direktnih veza s pjesmama).
 
+#### Taksonomija mreže
+Strukturna hijerarhija veza prikazana je na sljedećem dijagramu:
+
+```mermaid
+classDiagram
+    class Pjesma {
+        +String Naslov
+        +String Izvođač
+        +Int Godina
+        +Int Bodovi
+        +Enum Plasman
+    }
+    class Faktor {
+        +String Naziv
+        +Float Centralnost
+    }
+    Pjesma --|> Faktor : Pripada
+    Faktor <|-- Žanr
+    Faktor <|-- Jezik
+    Faktor <|-- Regija
+    Faktor <|-- TipIzvođača
+```
+
+*Slika 2. Taksonomija entiteta u grafu. Pjesma kao centralni subjekt povezana je s višestrukim kategorijama faktora koji služe kao agregacijske točke u analizi (inherentno nasljeđivanje svojstava faktora).*
+
 #### Procedura
 Vizualizacija toka podataka (Data Flow Diagram):
 
@@ -57,6 +82,25 @@ Inicijalna mrežna analiza uzorka od procijenjenih 48 entries (Top 3 iz 16 godin
 -   **Jezik kao centralni čvor:** Engleski jezik ostaje najsnažnije povezano čvorište u pobjedničkom klasteru, iako se u razdoblju nakon 2017. (Salvador Sobral) uočava porast centralnosti nacionalnih jezika.
 -   **Regijski klasteri:** Regija "Scandinavia" i "Central Europe" pokazuju najveći stupanj centralnosti, što sugerira visoku frekvenciju uspjeha unutar tih geografskih blokova u analiziranom uzorku.
 -   **Vizualna taksonomija:** Uvođenje vizualnih atributa (zlatni obrub za pobjednike, srebro/bronca za plasmane) omogućilo je brzu identifikaciju distribucije pobjedničkih pjesama unutar specifičnih žanrovskih oblaka (npr. pop/electronic vs. ballad).
+
+#### Analitički klasteri
+Proces identifikacije trendova kroz klasteriranje prikazan je niže:
+
+```mermaid
+graph LR
+    A[Čvor Faktora] --- B((Pjesma 1))
+    A --- C((Pjesma 2))
+    A --- D((Pjesma 3))
+    style A fill:#f9f,stroke:#333,stroke-width:4px
+    subgraph Klaster uspjeha
+    B
+    C
+    D
+    end
+    D --- E[Drugi Faktor]
+```
+
+*Slika 3. Shematski prikaz klasteriranja. Gustoća veza oko jednog faktora vizualno sugerira "recept za uspjeh", dok preklapanje s drugim faktorima (E) ukazuje na hibridne trendove (npr. korelacija jezika i žanra).*
 
 ---
 
