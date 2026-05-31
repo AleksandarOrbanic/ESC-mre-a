@@ -175,4 +175,3 @@ Istraživanje potvrđuje da najuspešnije pjesme karakterizira visoka mrežna bl
 3.  **Bostock, M. (2018):** *D3.js: Data-Driven Documents*. Force-directed layout algorithms documentation. Dostupno na: [https://d3js.org](https://d3js.org).
 4.  **Hagberg, A., Swart, P., S Chult, D. (2008):** *Exploring network structure, dynamics, and function with NetworkX*. Los Alamos National Lab (LANL), Los Alamos, NM (United States).
 5.  **Spiteri, J. (2021):** *Voting Patterns and Geopolitical Blocs in the Eurovision Song Contest: A Social Network Analysis Approach*. Journal of Cultural Economics, 45(2), 215-238.
-6.  **Istraživanje društvenih mreža:** Interni materijali i upute za modeliranje grafova, Fakultet informatike, 2026.
