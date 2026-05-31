@@ -4,7 +4,7 @@ Autor: Aleksandar Orbanić
 Kolegij: Istraživanje društvenih mreža  
 Datum: 18. svibnja 2026.  
 
-![Eurovizija](https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80)
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Eurovision_Song_Contest_logo.svg/600px-Eurovision_Song_Contest_logo.svg.png" width="350" alt="Eurovision Song Contest Logo" />
 
 ---
 
