@@ -17,6 +17,9 @@ export interface EurovisionSong {
   region: string;
   result_category: string;
   description?: string;
+  jury_score?: number;
+  televote_score?: number;
+  split_metric_type?: string;
 }
 
 export const translations: Record<string, string> = {
@@ -261,3 +264,11 @@ export const songsData: EurovisionSong[] = [
     description: "Avanvgardni vizualni spektakl koji je prkosio eurovizijskim konvencijama. Tommy Cash je dokazao da 'čudno' i dalje može ostvariti vrhunski plasman."
   }
 ];
+
+songsData.forEach(song => {
+  if (song.jury_score === undefined) song.jury_score = song.jury_points;
+  if (song.televote_score === undefined) song.televote_score = song.televote_points;
+  if (song.split_metric_type === undefined) {
+    song.split_metric_type = song.year === 2013 ? 'avg_rank_lower_is_better' : 'points';
+  }
+});

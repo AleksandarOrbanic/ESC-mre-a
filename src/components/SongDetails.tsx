@@ -81,38 +81,77 @@ export const SongDetails: React.FC<Props> = ({ song, onClose }) => {
             </h3>
             
             <div className="grid gap-4">
-              <AttributeItem icon={<MapPin className="w-4 h-4" />} label="Država" value={`${song.country} (${translations[song.region] || song.region})`} />
+              <AttributeItem icon={<MapPin className="w-4 h-4" />} label="Država" value={song.country} />
               <AttributeItem icon={<Music className="w-4 h-4" />} label="Žanr" value={translations[song.genre] || song.genre} />
               <AttributeItem icon={<Languages className="w-4 h-4" />} label="Jezik" value={translations[song.language] || song.language} />
               <AttributeItem icon={<User className="w-4 h-4" />} label="Tip izvođača" value={translations[song.performer_type] || song.performer_type} />
-              <AttributeItem icon={<Calendar className="w-4 h-4" />} label="Redoslijed" value={`${song.running_order} (${translations[song.running_order_half] || song.running_order_half})`} />
-              <AttributeItem icon={<Zap className="w-4 h-4" />} label="Jača podrška" value={song.stronger_support === 'televote' ? 'Publika' : song.stronger_support === 'jury' ? 'Žiri' : 'Uravnoteženo'} />
+              <AttributeItem icon={<Calendar className="w-4 h-4" />} label="Redoslijed nastupa" value={`${song.running_order || 'nije dostupno'}`} />
+              <AttributeItem icon={<Calendar className="w-4 h-4" />} label="Polovica nastupa" value={translations[song.running_order_half] || song.running_order_half || 'nije dostupno'} />
+              <AttributeItem icon={<Zap className="w-4 h-4" />} label="Jača podrška" value={song.stronger_support === 'televote' ? 'Publika' : song.stronger_support === 'jury' ? 'Žiri' : song.stronger_support === 'balanced' ? 'Uravnoteženo' : 'nije dostupno'} />
+              <AttributeItem 
+                icon={<BarChart3 className="w-4 h-4" />} 
+                label="Tip split metrike" 
+                value={song.split_metric_type === 'avg_rank_lower_is_better' ? 'Prosječni rang (avg_rank_lower_is_better)' : (song.split_metric_type === 'points' ? 'Bodovi (points)' : 'nije dostupno')} 
+              />
             </div>
           </div>
 
           <div className="mb-8 p-4 bg-blue-50/50 rounded-xl border border-blue-100">
             <div className="flex gap-4 mb-4">
                <div className="flex-1">
-                 <p className="text-xs font-bold text-blue-600 uppercase mb-1">Žiri</p>
-                 <div className="h-2 w-full bg-blue-200 rounded-full overflow-hidden">
-                    <div 
-                      className="h-full bg-blue-600" 
-                      style={{ width: `${(song.jury_points / (song.jury_points + song.televote_points)) * 100}%` }} 
-                    />
-                 </div>
-                 <p className="text-sm font-bold mt-1">{song.jury_points} bodova</p>
+                 <p className="text-xs font-bold text-blue-600 uppercase mb-1">
+                    {song.split_metric_type === 'avg_rank_lower_is_better' ? 'Prosječni rang žirija' : 'Bodovi žirija'}
+                 </p>
+                 {song.jury_score !== undefined && song.jury_score !== null && (song.jury_points + song.televote_points > 0) ? (
+                   <div className="h-2 w-full bg-blue-200 rounded-full overflow-hidden mb-1">
+                      <div 
+                        className="h-full bg-blue-600" 
+                        style={{ 
+                          width: `${song.split_metric_type === 'avg_rank_lower_is_better'
+                            ? (10 - Math.min(9, song.jury_score)) * 10 
+                            : (song.jury_points / (song.jury_points + song.televote_points)) * 100}%` 
+                        }} 
+                      />
+                   </div>
+                 ) : (
+                   <div className="h-2 w-full bg-slate-200 rounded-full mb-1" />
+                 )}
+                 <p className="text-sm font-bold text-slate-900">
+                   {song.jury_score !== undefined && song.jury_score !== null 
+                     ? (song.split_metric_type === 'avg_rank_lower_is_better' ? song.jury_score : `${song.jury_score} bodova`) 
+                     : 'nije dostupno'}
+                 </p>
                </div>
                <div className="flex-1">
-                 <p className="text-xs font-bold text-pink-600 uppercase mb-1 text-right">Publika</p>
-                 <div className="h-2 w-full bg-pink-200 rounded-full overflow-hidden">
-                    <div 
-                      className="h-full bg-pink-600 ml-auto" 
-                      style={{ width: `${(song.televote_points / (song.jury_points + song.televote_points)) * 100}%` }} 
-                    />
-                 </div>
-                 <p className="text-sm font-bold mt-1 text-right">{song.televote_points} bodova</p>
+                 <p className="text-xs font-bold text-pink-600 uppercase mb-1 text-right">
+                    {song.split_metric_type === 'avg_rank_lower_is_better' ? 'Prosječni rang publike' : 'Bodovi publike'}
+                 </p>
+                 {song.televote_score !== undefined && song.televote_score !== null && (song.jury_points + song.televote_points > 0) ? (
+                   <div className="h-2 w-full bg-pink-200 rounded-full overflow-hidden mb-1">
+                      <div 
+                        className="h-full bg-pink-600 ml-auto" 
+                        style={{ 
+                          width: `${song.split_metric_type === 'avg_rank_lower_is_better'
+                            ? (10 - Math.min(9, song.televote_score)) * 10 
+                            : (song.televote_points / (song.jury_points + song.televote_points)) * 100}%` 
+                        }} 
+                      />
+                   </div>
+                 ) : (
+                   <div className="h-2 w-full bg-slate-200 rounded-full mb-1" />
+                 )}
+                 <p className="text-sm font-bold text-right text-slate-900">
+                   {song.televote_score !== undefined && song.televote_score !== null 
+                     ? (song.split_metric_type === 'avg_rank_lower_is_better' ? song.televote_score : `${song.televote_score} bodova`) 
+                     : 'nije dostupno'}
+                 </p>
                </div>
             </div>
+            {song.split_metric_type === 'avg_rank_lower_is_better' && (
+              <div className="text-[10px] text-blue-700 bg-blue-100/60 p-2.5 rounded-lg border border-blue-200/50 mt-2 font-medium">
+                Napomena: niža vrijednost znači bolji rang.
+              </div>
+            )}
           </div>
 
           {song.description && (
