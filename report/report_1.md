@@ -161,36 +161,6 @@ Metrike su primarno izračunate i prikazane za faktorske čvorove i države kako
 
 ---
 
-### 10. Ograničenja rada
-
-Tijekom interpretacije rezultata, nužno je uzeti u obzir sljedeća metodološka ograničenja:
-1.  **Ograničenost uzorka:** Analiza obuhvaća isključivo top 3 pjesme iz finala. Time se eliminira uvid u pjesme koje su bile popularne, ali su završile na nižim pozicijama (npr. od 4. do 10. mjesta), ili pjesme koje su ostale blokirane u polufinalu.
-2.  **Odsutnost uzročnosti:** Mreža prikazuje korelacije i asocijacije, ali ne može dokazati uzročno-posljedičnu vezu (npr. nastup u drugoj polovici večeri olakšava uočavanje pjesme gledateljima, ali sam po sebi ne jamči dobar plasman bez kvalitetne izvedbe).
-3.  **Pojednostavljena žanrovska klasifikacija:** ESC pjesme često spajaju elemente više žanrova; njezino katalogiziranje u jedan ili dva krovna žanra uvijek donosi određenu razinu subjektivnosti i redukcije podataka.
-4.  **Nedostatak transakcijskih podataka o glasanju:** Za potpunu analizu geopolitičkih glasačkih blokova ovaj model nije dovoljan, jer ne prati pojedinačne smjerove dodjele bodova (npr. država A daje bodove državi B), već samo agregirane bodovne atribute.
-5.  **Utjecaj vanjskih varijabli:** Faktori poput scenskog dizajna, proračuna delegacije, viralnosti na platformama poput TikToka te političkog konteksta u Europi uvelike utječu na bodove, no izrazito ih je teško strukturirati i kvantificirati unutar ovog mrežnog modela.
-
----
-
-### 11. Moguće proširenje rada
-
-Kako bi se odgovoreno na profesorski feedback i proširio znanstveni doseg ovog istraživanja, predlažu se sljedeći smjerovi proširenja:
-
-#### A) Integracija mreže glasanja (Voting Network)
-Uvođenje drugog, usmjerenog i težinskog grafa koji bi modelirao "tko glasa za koga" na temelju sirovih povijesnih podataka. To bi zahtijevalo proširenje baze podataka tablicom u sljedećem formatu:
-`year, vote_type (jury/televote), voting_country, receiving_country, points`
-
-#### B) Analiza glasačkih blokova (Geopolitical Blocs)
-Primjenom algoritama za detekciju zajednica (npr. *Louvain* ili *Girvan-Newman* algoritam) na mrežu glasanja, bilo bi moguće automatski identificirati stabilne geopolitičke saveze (npr. skandinavski blok, balkanski blok, bivše sovjetske države) i mjeriti njihovu snagu kroz godine.
-
-#### C) Komparativna analiza žirija i publike
-Razdvajanje mreže na dva neovisna sloja: ekskluzivni "Jury Network" i "Televote Network". Usporedbom struktura tih dviju mreža moglo bi se precizno mapirati kako preferencije glazbene industrije (žiri) koreliraju s općom europskom publikom te gdje nastaju najveći razlazi u estetskom vrednovanju.
-
-#### D) Geografska integracija (GIS mapiranje)
-Povezivanje mrežnih čvorova s geografskim koordinatama država sudionica radi projekcije grafa na interaktivnu kartu Europe, čime bi se mrežne metrike stopile s prostornom analizom.
-
----
-
 ### 12. Zaključak
 
 Mrežna analiza primijenjena u projektu "ESC Mreža" pokazuje da vizualizacija utemeljena na teoriji grafova i D3.js tehnologiji donosi novu, intuitivniju perspektivu u analizu eurovizijskih trendova. Umjesto statičnih tablica, sustav nudi fleksibilan interaktivni poligon u kojem korisnici mogu filtrirati i pratiti su-pojavljivanje ključnih obilježja. 
