@@ -4,7 +4,9 @@ Autor: Aleksandar Orbanić
 Kolegij: Istraživanje društvenih mreža  
 Datum: 18. svibnja 2026.  
 
-<img src="../src/assets/images/eurovision_stage_vibe_1779108990832.png" width="450" alt="Eurovision Stage Vibe" />
+<p align="center">
+  <img src="../src/assets/images/eurovision_stage_vibe_1779108990832.png" width="700" alt="Eurovision Stage Vibe" />
+</p>
 
 ---
 
