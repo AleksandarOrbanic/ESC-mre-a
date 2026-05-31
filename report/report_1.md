@@ -4,10 +4,7 @@ Autor: Aleksandar Orbanić
 Kolegij: Istraživanje društvenih mreža  
 Datum: 18. svibnja 2026.  
 
-![ESC mreža - prikaz grafa](../src/assets/esc_network.png)
-<!-- Napomena: Screenshot aplikacije preporučuje se spremiti u src/assets/esc_network.png za ispravan prikaz u repozitoriju. -->
-
-Slika 1. Interaktivna mreža čimbenika povezanih s pjesmama koje su završile među prve tri na Euroviziji od 2010. do 2025.
+![Eurovizija](../assets/eurovision.jpg)
 
 ---
 
