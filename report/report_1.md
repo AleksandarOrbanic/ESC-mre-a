@@ -262,6 +262,7 @@ Moguće je izraditi dva potpuno odvojena pod-grafa za svaku godinu – jedan ute
 Integracija mrežnog modela s geografskim informacijskim sustavom (GIS) omogućila bi prikazivanje čvorova država na interaktivnoj karti Europe. Veze bi se iscrtavale preko geografskih granica, što bi olakšalo vizualnu identifikaciju regionalnih i prostornih klastera uspjeha i geopolitičkih obrazaca.
 ---
 
+
 ## 10. Zaključak
 
 Projekt "ESC Network" uspješno demonstrira primjenjivost teorije grafova i mrežne analize u istraživanju složenih kulturnih i medijskih fenomena kao što je Pjesma Eurovizije. Prikazom povijesnih podataka u obliku nelinearnog asocijativnog grafa umjesto klasičnih statičnih tablica, omogućeno je intuitivno, vizualno i interaktivno pretraživanje obrazaca uspjeha.
