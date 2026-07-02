@@ -26,15 +26,15 @@ Uobičajene metode statističke analize i analize podataka često tretiraju ove 
 
 Cilj ovog rada je istražiti koji se čimbenici najčešće pojavljuju kod pjesama koje su ostvarile plasman među prve tri na Euroviziji od 2010. do 2025. godine te prikazati njihove međusobne povezanosti pomoću mrežnog grafa.
 
-Važno je naglasiti da ovaj rad ne predstavlja prediktivni model niti pokušava dokazati uzročnost između pojedinih varijabli i konačnog uspjeha. Umjesto toga, rad istražuje obrasce i su-pojavnosti u mreži već uspješnih pjesama, pružajući nelinearan i eksplorativan uvid u strukturu eurovizijskog uspjeha.
-
 Glavno istraživačko pitanje glasi: Koji se čimbenici najčešće pojavljuju kod pjesama koje su ostvarile plasman među prve tri na Euroviziji od 2010. do 2025.?
+
+Važno je naglasiti da ovaj rad ne predstavlja prediktivni model niti pokušava dokazati uzročnost između pojedinih varijabli i konačnog uspjeha. Umjesto toga, rad istražuje obrasce i su-pojavnosti u mreži već uspješnih pjesama, pružajući nelinearan i eksplorativan uvid u strukturu eurovizijskog uspjeha.
 
 ### 2.1. Motivacija za odabir teme
 
 Motivacija za odabir ove teme leži u jedinstvenom karakteru Eurovizije kao kulturnog i medijskog fenomena koji spaja glazbu, jezik, državu, publiku, žiri i scenski nastup. Tradicionalni statistički prikazi i tablice s bodovima često zamagljuju suptilne veze između različitih faktora. Primjerice, postavlja se pitanje povezuje li se određeni žanr češće s engleskim jezikom ili pak s određenom polovicom nastupa u finalu unutar pobjedničke skupine. Mrežna analiza omogućuje nam da sve te aspekte promatramo istovremeno, vizualizirajući cijeli eurovizijski ekosustav kroz elegantan i interaktivan graf.
 
-### 2.2. Istraživačko pitanje i cilj rada
+### 2.2. Cilj rada i istraživačko pitanje
 
 Istraživačko pitanje koje usmjerava ovaj rad glasi:
 **"Koji se čimbenici najčešće pojavljuju kod pjesama koje su ostvarile plasman među prve tri na Euroviziji od 2010. do 2025.?"**
@@ -73,17 +73,17 @@ Struktura podataka i varijable koje su zabilježene za svaku pjesmu u uzorku pri
 
 | Varijabla | Opis | Primjer vrijednosti | Uloga u mreži |
 | :--- | :--- | :--- | :--- |
-| **song_id** | jedinstvena oznaka pjesme | `song_2024_croatia` | identifikator čvora pjesme |
-| **song_label** | naziv čvora pjesme | `Croatia 2024 - Rim Tim Tagi Dim` | prikaz pjesme u grafu |
-| **country** | država predstavnica | `Croatia` | čvor države |
-| **genre** | pojednostavljeni žanr pjesme | `rock/pop` | faktorski čvor |
-| **language** | jezik pjesme | `English`, `native`, `mixed` | faktorski čvor |
-| **performer_type** | tip izvođača | `solo`, `duo`, `group` | faktorski čvor |
-| **running_order_half**| polovica nastupa | `first half`, `second half` | faktorski čvor |
-| **jury_score** | bodovi ili rang žirija | `210` | podatak za interpretaciju podrške |
-| **televote_score** | bodovi ili rang publike | `337` | podatak za interpretaciju podrške |
-| **stronger_support** | dominantna podrška | `televote`, `jury`, `balanced` | faktorski čvor |
-| **final_place** | konačni plasman | `1`, `2`, `3` | vizualni atribut pjesme |
+| song_id | jedinstvena oznaka pjesme | song_2024_croatia | identifikator čvora pjesme |
+| song_label | naziv čvora pjesme | Croatia 2024 - Rim Tim Tagi Dim | prikaz pjesme u grafu |
+| country | država predstavnica | Croatia | čvor države |
+| genre | pojednostavljeni žanr pjesme | rock/pop | faktorski čvor |
+| language | jezik pjesme | English, native, mixed | faktorski čvor |
+| performer_type | tip izvođača | solo, duo, group | faktorski čvor |
+| running_order_half | polovica nastupa | first half, second half | faktorski čvor |
+| jury_score | bodovi ili rang žirija | 210 | podatak za interpretaciju podrške |
+| televote_score | bodovi ili rang publike | 337 | podatak za interpretaciju podrške |
+| stronger_support | dominantna podrška | televote | faktorski čvor |
+| final_place | konačni plasman | 1, 2, 3 | vizualni atribut pjesme |
 
 ---
 
@@ -121,14 +121,14 @@ Sve veze u mreži su neusmjerene i imaju jednaku težinu, jer svaka veza predsta
 
 ### 4.3. Mrežne metrike
 
-Za potrebe kvantitativne analize mreže i evaluacije važnosti pojedinih čvorova, u aplikaciji su izračunate i prikazane dvije ključne mrežne metrike:
+Za potrebe kvantitativne analize mreže i evaluacije važnosti pojedinih čvorova, u aplikaciji su izračunate i prikazane ključne mrežne metrike:
 
-1.  **Stupanj centralnosti (Degree Centrality / Broj povezanih pjesama):** Za faktorske čvorove ova metrika predstavlja ukupan broj izravnih veza s pjesmama. Stupanj centralnosti izravno pokazuje učestalost pojavljivanja određenog atributa u uzorku od 45 najuspješnijih pjesama. Što je stupanj centralnosti veći, to se faktor češće pojavljuje među top 3 pjesmama.
+1.  **Stupanj centralnosti (Degree Centrality / Broj povezanih pjesama):** Za faktorske čvorove ova metrika predstavlja ukupan broj izravnih veza s pjesmama. Stupanj centralnosti izravno pokazuje učestalost pojavljivanja određenog atributa u uzorku od 45 najuspješnijih pjesama. Što je stupanj centralnosti veći, to se faktor češće pojavljuje među top 3 pjesmama. Kod država, stupanj centralnosti se u potpunosti preklapa s brojem top 3 plasmana u ovoj specifičnoj mreži, pa se za države u tablici koristi izravno broj plasmana i pobjeda.
 2.  **Posredovanje (Betweenness Centrality):** Mjeri u kojoj mjeri određeni čvor leži na najkraćim putovima između drugih čvorova u mreži. Čvorovi s visokom vrijednošću posredovanja djeluju kao "mostovi" koji povezuju različite, inače udaljene dijelove mreže (npr. povezuju specifične države s dominantnim jezicima ili žanrovima).
 
-*Metodološka napomena o bliskosti (Closeness Centrality):* Bliskost je izračunata kao dodatna mrežna metrika koja mjeri prosječnu udaljenost čvora do svih ostalih čvorova u grafu. Međutim, ona nije uključena u glavnu tablicu i interpretaciju rezultata jer u ovoj specifičnoj mreži (gdje su sve pjesme povezane s točno istim brojem kategorija atributa) vrijednosti bliskosti među čvorovima pokazuju vrlo male, gotovo zanemarive razlike te ne pridonose jasnijem razlikovanju ili interpretaciji strukturnih obrazaca.
+*Metodološka napomena o bliskosti (Closeness Centrality):* Closeness centrality razmatrana je kao dodatna metrika, ali nije uključena u glavnu interpretaciju jer u ovoj mreži ne daje dovoljno izražene razlike za objašnjenje ključnih obrazaca. Budući da su sve pjesme u grafu povezane s točno istim brojem kategorija atributa, vrijednosti bliskosti pokazuju vrlo male, gotovo zanemarive varijacije koje ne pridonose jasnijem razlikovanju strukturnih svojstava čvorova.
 
-Još jednom napominjemo da mrežna centralnost u ovom radu ne označava uzročnost – visoka vrijednost metrike za određeni faktor ne jamči uspjeh novim pjesmama, već isključivo opisuje strukturna obilježja dosadašnjih najuspješnijih izvedbi.
+Nijedna od ovih metrika ne dokazuje uzročnost uspjeha – visoka vrijednost metrike za određeni faktor ne jamči uspjeh novim pjesmama, već isključivo opisuje strukturna obilježja dosadašnjih najuspješnijih izvedbi.
 
 ---
 
@@ -168,13 +168,13 @@ U sklopu ovog rada razvijena je interaktivna i vizualno visoko polirana web apli
 Središnji dio aplikacije zauzima interaktivni graf pokretan D3-force simulacijom (D3.js). Korisnici mogu:
 *   Slobodno pomicati čvorove (drag-and-drop) kako bi istražili prostorni raspored.
 *   Zumirati (zoom) i pomicati (pan) cijelu mrežu.
-*   Vidjeti vizualno kodiranje: čvorovi pjesama imaju zlatne, srebrne ili brončane obruče ovisno o plasmanu (1., 2. ili 3. mjesto), dok su faktorski čvorovi obojeni i skalirani prema svom stupnju centralnosti (degree).
+*   Pratiti vizualno kodiranje: čvorovi pjesama imaju zlatne, srebrne ili brončane obruče ovisno o plasmanu (1., 2. ili 3. mjesto), dok su faktorski čvorovi obojeni i skalirani prema svom stupnju centralnosti (degree).
 
 ### 6.2. Tooltip i info panel
 
 Klikom na bilo koji čvor u grafu aktivira se detaljan bočni panel ili tooltip koji prikazuje strukturirane podatke:
 *   Za **čvor pjesme**: prikazuje se izvođač, država, godina natjecanja, ostvareni plasman, ukupni bodovi, žanrovska klasifikacija, jezik, tip izvođača, redoslijed nastupa, polovica nastupa u finalu te omjer glasova žirija i publike uz identifikaciju dominantne podrške.
-*   Za **faktorske čvorove**: prikazuju se mrežne metrike (stupanj centralnosti i betweenness), udio u cijelom uzorku te popis svih povezanih pjesama iz top 3 skupine koje dijele taj atribut.
+*   Za **faktorski čvor**: klikom na faktor u grafu prikazuju se njegove pripadajuće mrežne metrike, udio u uzorku, kao i dinamički popis svih povezanih pjesama i država koje dijele taj specifični atribut.
 
 ### 6.3. Pretraga
 
@@ -182,14 +182,14 @@ Aplikacija uključuje moćan i brz sustav pretraživanja i filtriranja. Korisnic
 *   Godini natjecanja (npr. upisom "2024" u grafu se ističu i izoliraju pjesme Švicarske, Hrvatske i Ukrajine koje su te godine završile u top 3).
 *   Državi predstavnici.
 *   Nazivu pjesme ili izvođaču.
-*   Žanru, jeziku ili dominantnoj podršci.
+*   Žanru, jeziku ili dominantnoj podršci (faktoru).
 
-### 6.4. Mrežne metrike
+### 6.4. Mrežne metrike u aplikaciji
 
 Aplikacija nudi analitički preglednik s interaktivnim tablicama koje prikazuju:
-*   **Najčešće faktore među top 3 pjesmama** (bivša tablica degree centralnosti za faktore, sada optimizirana prema broju i udjelu povezanih pjesama).
-*   **Top države prema mrežnim metrikama** (tablica država s prikazom top 3 plasmana, ostvarenih pobjeda i vrijednosti betweenness centralnosti).
-*   Ove tablice služe kao polazište za interpretaciju strukturnih svojstava mreže bez potrebe za vizualnim pretraživanjem samog grafa.
+*   **Najčešće faktore među top 3 pjesmama** s prikazom tipa faktora, broja povezanih pjesama i udjela u cjelokupnom uzorku.
+*   **Top države prema mrežnim metrikama** s prikazom ukupnog broja top 3 plasmana, ostvarenih pobjeda i izračunate vrijednosti betweenness centralnosti (posredovanja).
+*   Jasnu legendu čvorova, njihovih boja i obrubljenih stilova koji predstavljaju plasman (1., 2., 3. mjesto).
 
 ---
 
@@ -203,36 +203,36 @@ U mreži se po svom stupnju centralnosti (broju povezanih pjesama) i prostornoj 
 
 ### 7.2. Države u mreži
 
-Analizom mrežnih metrika za države uočava se da se nekoliko zemalja sustavno profilira kao izrazito uspješno u promatranom razdoblju. **Švedska** (Sweden), **Italija** (Italy) i **Ukrajina** (Ukraine) ističu se kao države s najvećim brojem pojavljivanja u top 3 skupini. U mrežnom grafu ovi čvorovi imaju visoku važnost jer uspijevaju ostvariti vrhunski plasman šaljući stilski i žanrovski potpuno različite koncepte (od tradicionalnog popa i balada do etno-rapa i hard rocka), pokazujući time svestranost i visoku prilagodljivost eurovizijskom tržištu.
+Analizom mrežnih metrika za države uočava se da se nekoliko zemalja sustavno profilira kao izrazito uspješno u promatranom razdoblju. **Švedska** (Sweden), **Italija** (Italy) i **Ukrajina** (Ukraine) ističu se kao države s najvećim brojem pojavljivanja u top 3 skupini. U mrežnom grafu ovi čvorovi imaju visoku važnost jer uspijevaju ostvariti vrhunski plasman šaljući stilski i žanrovski različite koncepte (od tradicionalnog popa i balada do etno-rapa i hard rocka), pokazujući time svestranost i visoku prilagodljivost eurovizijskom tržištu.
 
 ### 7.3. Žanr i jezik
 
-Iako je **pop** žanr i dalje pojedinačno najučestaliji mrežni čvor u pobjedničkom uzorku, uočava se visoka zastupljenost i drugih žanrovskih čvorova poput **balada** (ballad), **rocka** i **dance** glazbe, kao i raznih hibridnih oblika (npr. *rock/pop*, *folk/pop*). 
+Iako se **pop** i pop-srodni žanrovi najčešće pojavljuju u analiziranom uzorku pobjedničkih pjesama, uočava se zapažena zastupljenost i drugih žanrovskih čvorova poput **balada** (ballad), **rocka** i **dance** glazbe, kao i raznih hibridnih oblika.
 
-U pogledu jezika, **engleski jezik** očekivano drži primat po stupnju centralnosti unutar cijelog uzorka od 2010. do 2025. Međutim, analiza trendova uočljivih u mreži ukazuje na to da su u novijem razdoblju (posebice od 2017. nadalje) pjesme na nacionalnim jezicima ostvarile izuzetno zapažene rezultate (npr. Italija 2021., Ukrajina 2021. i 2022., Finska 2023., Švicarska 2024. s miješanim elementima), što upućuje na obrazac rasta popularnosti jezične i kulturne autentičnosti.
+U pogledu jezika, **engleski jezik** jest izuzetno čest među top 3 pjesmama i drži primat po stupnju centralnosti unutar cijelog uzorka od 2010. do 2025. Međutim, analiza trendova uočljivih u mreži ukazuje na to da nacionalni jezici također ostvaruju izuzetno visoke plasmane (npr. Italija 2021., Ukrajina 2021. i 2022., Finska 2023., Švicarska 2024. s miješanim elementima), što upućuje na obrazac rasta popularnosti jezične i kulturne autentičnosti.
 
 ### 7.4. Podrška publike i žirija
 
-Uvođenjem odvojenog sustava glasovanja 2016. godine, mrežni model je nadopunjen faktorskim čvorovima za dominantnu podršku (*stronger_support*). Mreža jasno vizualizira polarizaciju u europskom glasačkom tijelu:
+Uvođenjem odvojenog sustava glasovanja 2016. godine, mrežni model je nadopunjen faktorskim čvorovima za dominantnu podršku (*stronger_support*). Podrška publike i žirija razlikuje se od pjesme do pjesme, jasno vizualizirajući povremenu polarizaciju u europskom glasačkom tijelu:
 *   Dio pjesama u top 3 skupini primarno duguje svoj plasman izrazitoj podršci stručnog žirija (npr. Sjeverna Makedonija 2019., Švedska 2023.).
 *   Drugi dio pjesama ostvario je uspjeh zahvaljujući masovnoj podršci publike kroz televote, unatoč rezerviranosti žirija (npr. Norveška 2019., Finska 2023., Hrvatska 2024.).
-*   Pobjedničke pjesme se u analiziranom uzorku najčešće povezuju s čvorom **uravnotežene podrške** (balanced), što upućuje na obrazac da je za samo osvajanje natjecanja u pravilu potreban široki konsenzus obiju glasačkih skupina.
+*   Pobjedničke pjesme se u analiziranom uzorku najčešće povezuju s čvorom **uravnotežene podrške** (balanced), što upućuje na obrazac da je za samo osvajanje natjecanja u pravilu poželjna podrška obiju glasačkih skupina.
 
-### 7.5. Redoslijed nastupa
+### 7.5. Polovica nastupa
 
-U mreži se čimbenik redoslijeda nastupa promatra kroz podjelu finalne večeri na prvu i drugu polovicu. Veći broj pjesama iz top 3 skupine povezuje se s čvorom **druge polovice nastupa** (second half). To je u skladu s teorijskim pretpostavkama o efektu svježine pamćenja (recency effect), prema kojem kasniji nastupi ostaju u boljem sjećanju gledatelja u trenutku otvaranja linija za glasanje. Ipak, prisutnost pjesama koje su ostvarile vrhunski plasman i iz prve polovice (npr. Švedska 2012., Ukrajina 2022.) potvrđuje da iznimno popularne pjesme mogu uspješno nadići potencijalne nedostatke rane pozicije u programu.
+U mreži se čimbenik redoslijeda nastupa promatra kroz podjelu finalne večeri na prvu i drugu polovicu. Veći broj pjesama iz top 3 skupine povezuje se s čvorom **druge polovice nastupa** (second half). To se u literaturi povezuje s efektom svježine pamćenja (recency effect), prema kojem kasniji nastupi ostaju u svježem sjećanju gledatelja u trenutku otvaranja linija za glasanje. Ipak, prisutnost pjesama koje su ostvarile vrhunski plasman i iz prve polovice (npr. Švedska 2012., Ukrajina 2022.) potvrđuje da iznimno popularne pjesme mogu uspješno nadići potencijalne nedostatke rane pozicije u programu, te da polovica nastupa ne smije biti interpretirana kao izravan uzrok uspjeha.
 
 ---
 
 ## 8. Ograničenja rada
 
-Tijekom analize i interpretacije rezultata potrebno je uzeti u obzir sljedeća metodološka i praktična ograničenja:
-1.  **Veličina i selekcija uzorka:** Analiza je striktno ograničena na top 3 pjesme svakog natjecanja. Rezultati stoga opisuju isključivo obilježja same "elite" natjecanja, a ne cjelokupne trendove svih sudionika Eurovizije. Za donošenje općenitijih zaključaka o tome što razlikuje uspješne pjesme od neuspješnih, uzorak bi morao uključivati i pjesme s dna tablice te one koje se nisu kvalificirale u finale.
-2.  **Odsutnost uzročnosti:** Mrežne veze prikazuju isključivo su-pojavnost (korelaciju) atributa i uspjeha unutar uzorka. Činjenica da je neki faktor (poput engleskog jezika ili solo izvođača) visoko centralan ne znači da on uzrokuje uspjeh, već samo da se u promatranom uzorku najčešće pojavljuje.
+Tijekom analize i interpretacije rezultata potrebno je uzeti u obzir sljedeća metodološka i praktikalna ograničenja:
+1.  **Veličina i selekcija uzorka:** Analizirane su isključivo top 3 pjesme, ne svi finalisti. Rezultati stoga opisuju obilježja same "elite" natjecanja, a ne cjelokupne trendove svih sudionika Eurovizije. Za donošenje općenitijih zaključaka o tome što razlikuje uspješne pjesme od neuspješnih, uzorak bi morao uključivati i pjesme s dna tablice te one koje se nisu kvalificirale u finale.
+2.  **Odsutnost uzročnosti:** Mrežne veze prikazuju isključivo su-pojavnost (korelaciju) atributa i uspjeha unutar uzorka. Rad ne dokazuje uzročno-posljedične veze; visoka mrežna centralnost nekog faktora ne jamči uspjeh novim pjesmama, već opisuje obilježja dosadašnjih najuspješnijih izvedbi.
 3.  **Pojednostavljena klasifikacija žanrova:** Glazbeni žanrovi su u datasetu radi mrežne jasnoće morali biti svedeni na bazične ili hibridne kategorije (pop, rock, ballad, dance itd.). U stvarnosti, eurovizijske pjesme često obiluju složenim glazbenim stilovima i scenskim rješenjima koje je teško jednoznačno kategorizirati.
-4.  **Promjene u sustavu glasovanja:** Sustav glasovanja se mijenjao kroz godine (posebice uvođenje odvojenog prikaza glasova žirija i publike od 2016. nadalje, te promjene u sustavu glasovanja ostatka svijeta u novije vrijeme). Podaci za starija natjecanja (poput 2013. godine gdje su dostupni samo prosječni rangovi ili split rezultati prema starom modelu) zahtijevali su prilagodbu i harmonizaciju, što može utjecati na preciznost komparativne analize bodova.
-5.  **Nepotpuno obuhvaćanje geopolitičkih faktora:** Mreža u trenutnom obliku ne analizira detaljne transakcijske tokove bodova između pojedinih država (voting block patterns), već samo povezuje pjesmu s njezinom matičnom državom.
-6.  **Nemjerljivi vanjski čimbenici:** Uspjeh na Euroviziji često ovisi o vanjskim čimbenicima kao što su geopolitička situacija u Europi, viralnost na društvenim mrežama (npr. TikTok), karizma izvođača ili proračun za scenski nastup, što su varijable koje je izuzetno teško precizno kvantificirati i ugraditi u mrežni model.
+4.  **Promjene u sustavu glasovanja:** Sustav glasovanja se mijenjao kroz godine (posebice uvođenje odvojenog prikaza glasova žirija i publike od 2016. nadalje). Za 2013. godinu split sustav i metrika nisu u potpunosti identični klasičnim bodovima iz kasnijih faza, jer se temelje na prosječnim rangovima, što je zahtijevalo prilagodbu podataka.
+5.  **Potreba za transakcijskim podacima:** Trenutna mreža ne analizira detaljne transakcijske tokove bodova između pojedinih država (voting block patterns), već samo povezuje pjesmu s njezinom matičnom državom. Za pravu analizu voting blokova potreban je dodatni dataset s podacima koja država kojoj daje bodove.
+6.  **Nemjerljivi vanjski čimbenici:** Uspjeh na Euroviziji često ovisi o vanjskim čimbenicima kao što su geopolitička situacija u Europi, viralnost na društvenim mrežama (npr. TikTok), karizma izvođača ili proračun za scenski nastup. Ovi vanjski faktori mogu služiti kao koristan sociokulturni kontekst, ali nisu mrežnim putem dokazani uzroci konačnih rezultata.
 
 ---
 
@@ -242,24 +242,24 @@ Ovaj projekt postavlja čvrste temelje za različite smjerove budućih istraživ
 
 ### 9.1. Proširenje uzorka
 
-Uzorak bi se mogao proširiti na sve pjesme koje su se plasirale u finale (top 26) ili čak na sve sudionike polufinalnih večeri. To bi omogućilo provođenje komparativne mrežne analize između uspješnih pjesama (top 3/top 5) i onih koje su ostale na dnu tablice, čime bi se jasnije identificirali faktori diferencijacije.
+Uzorak bi se mogao proširiti na top 5, top 10 ili sve pjesme koje su se plasirale u finale (top 26). To bi omogućilo provođenje komparativne mrežne analize između najuspješnijih pjesama i onih koje su ostale na dnu tablice, čime bi se jasnije identificirali faktori diferencijacije.
 
 ### 9.2. Voting network analiza
 
-Najzanimljivije proširenje bilo bi modeliranje mreže glasovanja (Voting Network). Umjesto povezivanja pjesama s atributima, čvorovi bi predstavljali države, a usmjerene i težinske veze (edges) predstavljale bi dodijeljene bodove. 
+Najzanimljivije proširenje bilo bi modeliranje mreže glasovanja (Voting Network). Umjesto povezivanja pjesama s atributima, čvorovi bi predstavljali države, a usmjerene i težinske veze (edges) predstavljale bi dodijeljene bodove.
 
 Potreban dataset za takvu analizu morao bi pratiti strukturu:
-`year, vote_type (jury/televote), voting_country, receiving_country, points`
+`year, vote_type, voting_country, receiving_country, points`
 
 Analizom takvog grafa mogle bi se matematički detektirati tradicionalne koalicije i glasački blokovi (npr. nordijski blok, bivša Jugoslavija, Grčka i Cipar).
 
 ### 9.3. Usporedba publike i žirija
 
-Moguće je izraditi dva potpuno odvojena pod-grafa za svaku godinu – jedan temeljen isključivo na bodovima stručnog žirija, a drugi na glasovima publike. Usporedbom mrežnih metrika tih dvaju grafova moglo bi se precizno utvrditi koji žanrovi ili jezici imaju sustavnu prohodnost kod struke, a koji kod opće populacije.
+Moguće je izraditi dva potpuno odvojena pod-grafa za svaku godinu – jedan utemeljen isključivo na bodovima stručnog žirija, a drugi na glasovima publike (televote). Usporedbom mrežnih metrika tih dvaju grafova moglo bi se precizno utvrditi koji žanrovi ili jezici imaju sustavnu prohodnost kod struke, a koji kod opće populacije.
 
 ### 9.4. Geografska analiza
 
-Integracija mrežnog modela s geografskim informacijskim sustavom (GIS) omogućila bi prikazivanje čvorova država na interaktivnoj karti Europe. Veze bi se iscrtavale preko geografskih granica, što bi olakšalo vizualnu identifikaciju regionalnih i prostornih klastera uspjeha.
+Integracija mrežnog modela s geografskim informacijskim sustavom (GIS) omogućila bi prikazivanje čvorova država na interaktivnoj karti Europe. Veze bi se iscrtavale preko geografskih granica, što bi olakšalo vizualnu identifikaciju regionalnih i prostornih klastera uspjeha i geopolitičkih obrazaca.
 
 ### 9.5. Community detection
 
@@ -273,7 +273,7 @@ Projekt "ESC Network" uspješno demonstrira primjenjivost teorije grafova i mre�
 
 Provedena analiza na uzorku od 45 najuspješnijih pjesama u razdoblju od 2010. do 2025. godine potvrđuje da se određena obilježja – poput solo izvođača, engleskog jezika, pop žanra te nastupa u drugoj polovici večeri – sustavno povezuju s vrhunskim rezultatima. Istovremeno, interaktivni mrežni graf jasno vizualizira iznimke od ovih pravila te uočljiv trend postupne diverzifikacije žanrova i povratka nacionalnih jezika u sam vrh natjecanja u novijem desetljeću.
 
-U konačnici, ovaj rad ostaje u okviru eksplorativne i vizualne analize mrežnih struktura. Razvijena aplikacija pruža izvanredan obrazovni i istraživački alat koji demistificira eurovizijske podatke i nudi kvalitetnu polazišnu točku za naprednije analize sociopolitičkih i kulturnih dinamika na europskom kontinentu.
+U konačnici, ovaj rad ostaje u okviru eksplorativne i vizualne analize mrežnih struktura. Razvijena aplikacija pruža izvanredan obrazovni i istraživački alat koji demistificira eurovizijske podatke i nudi kvalitetnu polazišnu točku za naprednije analize sociopolitičkih i kulturnih dinamika na europskom kontinentu, naglašavajući da rezultati prikazuju obrasce, ali ne dokazuju uzroke uspjeha.
 
 ---
 
