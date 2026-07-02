@@ -260,7 +260,7 @@ Moguće je izraditi dva potpuno odvojena pod-grafa za svaku godinu – jedan ute
 ### 9.4. Geografska analiza
 
 Integracija mrežnog modela s geografskim informacijskim sustavom (GIS) omogućila bi prikazivanje čvorova država na interaktivnoj karti Europe. Veze bi se iscrtavale preko geografskih granica, što bi olakšalo vizualnu identifikaciju regionalnih i prostornih klastera uspjeha i geopolitičkih obrazaca.
----
+
 
 
 ## 10. Zaključak
