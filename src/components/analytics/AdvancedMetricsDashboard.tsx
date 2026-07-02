@@ -110,16 +110,6 @@ export const AdvancedMetricsDashboard: React.FC<AdvancedMetricsDashboardProps> =
 
             <div className="p-5 bg-slate-950/50 rounded-2xl border border-slate-800 flex flex-col justify-between">
               <div>
-                <div className="text-emerald-400 font-black text-xs uppercase mb-1 tracking-wider">Bliskost (Closeness)</div>
-                <p className="text-xs text-slate-400 leading-relaxed">
-                  Pokazuje koliko je čvor prosječno blizu ostalim čvorovima u cijeloj mreži.
-                </p>
-              </div>
-              <div className="text-[10px] text-emerald-500 font-bold uppercase mt-4">Mjera efikasnosti širenja</div>
-            </div>
-
-            <div className="p-5 bg-slate-950/50 rounded-2xl border border-slate-800 flex flex-col justify-between">
-              <div>
                 <div className="text-purple-400 font-black text-xs uppercase mb-1 tracking-wider">Između (Betweenness)</div>
                 <p className="text-xs text-slate-400 leading-relaxed">
                   Pokazuje koliko često se čvor pojavljuje kao "most" ili posrednik između drugih čvorova.
@@ -127,13 +117,23 @@ export const AdvancedMetricsDashboard: React.FC<AdvancedMetricsDashboardProps> =
               </div>
               <div className="text-[10px] text-purple-500 font-bold uppercase mt-4">Mjera utjecaja i mrežne sinapse</div>
             </div>
+
+            <div className="p-5 bg-amber-500/10 rounded-2xl border border-amber-500/20 flex flex-col justify-between font-sans">
+              <div>
+                <div className="text-amber-400 font-black text-xs uppercase mb-1 tracking-wider">Objašnjenje metrika</div>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  U glavnoj interpretaciji koriste se degree centrality i betweenness centrality. Degree pokazuje koliko je država ili faktor izravno povezan s drugim čvorovima, dok betweenness pokazuje ima li čvor ulogu mosta između različitih dijelova mreže. Closeness centrality nije uključena u glavnu tablicu jer u ovoj mreži ne daje dovoljno izražene razlike za interpretaciju.
+                </p>
+              </div>
+              <div className="text-[10px] text-amber-500 font-bold uppercase mt-4">Metodološka napomena</div>
+            </div>
           </div>
 
           {/* Top Factors Ranking Panel */}
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Activity className="w-5 h-5 text-blue-400" />
-              <h3 className="text-sm font-black text-white uppercase tracking-wider">TOP FAKTORI PREMA DEGREE CENTRALITY</h3>
+              <h3 className="text-sm font-black text-white uppercase tracking-wider">Najčešći faktori među top 3 pjesmama</h3>
             </div>
             
             <div className="bg-slate-950/40 rounded-2xl border border-slate-800/80 overflow-hidden shadow-xl">
@@ -144,7 +144,7 @@ export const AdvancedMetricsDashboard: React.FC<AdvancedMetricsDashboardProps> =
                       <th className="px-5 py-4">Faktor</th>
                       <th className="px-5 py-4">Tip</th>
                       <th className="px-5 py-4 text-center">Broj povezanih pjesama</th>
-                      <th className="px-5 py-4 text-right">Degree Centrality</th>
+                      <th className="px-5 py-4 text-right">Udio u uzorku</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-800/60">
@@ -163,7 +163,7 @@ export const AdvancedMetricsDashboard: React.FC<AdvancedMetricsDashboardProps> =
                           {item.connectedSongsCount}
                         </td>
                         <td className="px-5 py-3.5 text-right font-mono text-blue-400 font-black">
-                          {item.degree}
+                          {((item.connectedSongsCount / 45) * 100).toFixed(1)}%
                         </td>
                       </tr>
                     ))}
@@ -171,6 +171,9 @@ export const AdvancedMetricsDashboard: React.FC<AdvancedMetricsDashboardProps> =
                 </table>
               </div>
             </div>
+            <p className="text-[11px] text-slate-400 mt-2.5 px-1 leading-relaxed">
+              Broj povezanih pjesama odgovara degree vrijednosti faktorskog čvora, odnosno pokazuje koliko se puta određeni faktor pojavljuje u analiziranom uzorku od 45 pjesama.
+            </p>
           </div>
 
           {/* Top Countries Ranking Panel */}
@@ -188,8 +191,6 @@ export const AdvancedMetricsDashboard: React.FC<AdvancedMetricsDashboardProps> =
                       <th className="px-5 py-4">Država</th>
                       <th className="px-5 py-4 text-center">Plasmana (Top 3)</th>
                       <th className="px-5 py-4 text-center">Pobjeda</th>
-                      <th className="px-5 py-4 text-right">Degree</th>
-                      <th className="px-5 py-4 text-right">Closeness</th>
                       <th className="px-5 py-4 text-right">Betweenness</th>
                     </tr>
                   </thead>
@@ -213,12 +214,6 @@ export const AdvancedMetricsDashboard: React.FC<AdvancedMetricsDashboardProps> =
                           ) : (
                             <span className="text-slate-600 font-bold">-</span>
                           )}
-                        </td>
-                        <td className="px-5 py-3.5 text-right font-mono text-blue-400 font-bold">
-                          {item.degree}
-                        </td>
-                        <td className="px-5 py-3.5 text-right font-mono text-emerald-400 font-bold">
-                          {item.closeness.toFixed(3)}
                         </td>
                         <td className="px-5 py-3.5 text-right font-mono text-purple-400 font-bold">
                           {item.betweenness.toFixed(1)}
