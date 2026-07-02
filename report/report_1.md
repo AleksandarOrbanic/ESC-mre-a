@@ -12,9 +12,9 @@ Datum: 18. svibnja 2026.
 
 ## 1. Sažetak
 
-Ovaj rad bavi se eksplorativnom mrežnom analizom i vizualizacijom čimbenika koji povezuju pjesme s ostvarenim plasmanom među prve tri u finalu natjecanja za Pjesmu Eurovizije (Eurovision Song Contest - ESC) u razdoblju od 2010. do 2025. godine. Kako se natjecanje 2020. godine nije održalo zbog pandemije bolesti COVID-19, u analizu je uključeno preostalih 15 održanih natjecanja, što čini ukupan uzorak od 45 pjesama (15 godina × 3 pjesme). Svaka pjesma promatrana je kao čvor koji se povezuje s nizom sociokulturnih, strukturnih i glazbenih čimbenika kao što su država predstavnica, žanr, jezik izvedbe, tip izvođača, polovica nastupa u finalu te dominantna podrška publike ili žirija.
+Ovaj rad bavi se eksplorativnom mrežnom analizom pjesama koje su ostvarile plasman među prve tri na Euroviziji od 2010. do 2025. godine. Kako se natjecanje 2020. godine nije održalo zbog pandemije bolesti COVID-19, u analizu je uključeno preostalih 15 održanih natjecanja, što čini ukupan uzorak od 45 pjesama (15 godina × 3 pjesme). Svaka pjesma promatrana je kao čvor koji se povezuje s nizom sociokulturnih, strukturnih i glazbenih čimbenika kao što su država predstavnica, žanr, jezik izvedbe, tip izvođača, polovica nastupa u finalu te dominantna podrška publike ili žirija.
 
-Glavni cilj rada nije predviđanje budućih pobjednika ili dokazivanje uzročnosti, već prepoznavanje ponavljajućih obrazaca unutar analiziranog uzorka uspješnih pjesama pomoću teorije grafova. Kroz razvoj interaktivne web aplikacije temeljene na D3.js knjižnici, vizualizirani su odnosi između pjesama i njihovih obilježja. Izračunom mrežnih metrika, poput stupnja centralnosti (degree) i posredovanja (betweenness), ukazano je na to koji se čimbenici najčešće pojavljuju u asocijaciji s vrhunskim rezultatima, što omogućuje dublje i nelinearno razumijevanje Eurovizije kao kompleksnog sustava.
+U radu se identificiraju ponavljajući obrasci unutar analiziranog uzorka uspješnih pjesama pomoću teorije grafova. Kroz razvoj interaktivne web aplikacije temeljene na D3.js knjižnici, vizualizirani su odnosi između pjesama i njihovih obilježja. Izračunom mrežnih metrika, poput stupnja centralnosti (degree) i posredovanja (betweenness), ukazano je na to koji se čimbenici najčešće pojavljuju u asocijaciji s vrhunskim rezultatima, što omogućuje dublje i nelinearno razumijevanje Eurovizije kao kompleksnog sustava.
 
 ---
 
@@ -155,8 +155,7 @@ graph TD
     H --> H1[1. mjesto / 2. mjesto / 3. mjesto]
 ```
 
-Ispod dijagrama napiši kratak tekst:
-“Dijagram prikazuje logiku izgradnje mreže. Svaka pjesma povezuje se s nizom atributa koji se u grafu pojavljuju kao faktorski čvorovi. Na taj se način može analizirati koji se čimbenici najčešće ponavljaju među najuspješnijim eurovizijskim pjesmama.”
+Dijagram prikazuje logiku izgradnje mreže. Svaka pjesma povezuje se s nizom atributa koji se u grafu pojavljuju kao faktorski čvorovi. Na taj se način može analizirati koji se čimbenici najčešće ponavljaju među najuspješnijim eurovizijskim pjesmama.
 
 ---
 
