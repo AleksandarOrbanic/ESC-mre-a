@@ -1,4 +1,4 @@
-# Što povezuje najuspješnije eurovizijske pjesme?
+# ESC Mreža: Što povezuje najuspješnije eurovizijske pjesme?
 
 ## Mrežna analiza top 3 pjesama od 2010. do 2025.
 
